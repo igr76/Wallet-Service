@@ -4,7 +4,7 @@ import com.igr.walletservice.entity.History;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/** Репозиторий истории */
 public class HistoryRepository {
     List<History> historyList ;
 

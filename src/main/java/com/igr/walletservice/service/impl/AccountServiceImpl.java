@@ -7,6 +7,7 @@ import com.igr.walletservice.service.AccountService;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
+/** Реализация сервиса счетов */
 @RequiredArgsConstructor
 public class AccountServiceImpl implements AccountService {
     private AccountRepository accountRepository;

@@ -6,6 +6,7 @@ import com.igr.walletservice.service.UserService;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Scanner;
+/** Контроллер счетов */
 @RequiredArgsConstructor
 public class AccountController {
     private AccountService accountService;

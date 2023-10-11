@@ -3,7 +3,7 @@ package com.igr.walletservice.service.impl;
 import com.igr.walletservice.entity.User;
 import com.igr.walletservice.repository.UserRepository;
 import com.igr.walletservice.service.UserService;
-
+/** Реализация сервиса пользователей */
 public class UserServiceImpl implements UserService {
     private  UserRepository userRepository;
     @Override

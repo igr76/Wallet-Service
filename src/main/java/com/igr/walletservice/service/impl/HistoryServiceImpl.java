@@ -6,6 +6,7 @@ import com.igr.walletservice.service.HistoryService;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+/** Реализация сервиса истории */
 @RequiredArgsConstructor
 public class HistoryServiceImpl implements HistoryService {
     private HistoryRepository historyRepository;

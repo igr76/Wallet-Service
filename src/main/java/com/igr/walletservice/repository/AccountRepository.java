@@ -1,7 +1,7 @@
 package com.igr.walletservice.repository;
 
 import java.util.HashMap;
-
+/** Репозиторий счетов*/
 public class AccountRepository {
     HashMap<String ,Double> balanceMap;
     public int increaseBalance(double money, String user) {

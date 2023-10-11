@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Scanner;
-
+/** Контроллер пользователей */
 @RequiredArgsConstructor
 public class UserController {
     private UserService userService;

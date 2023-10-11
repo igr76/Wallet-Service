@@ -4,7 +4,7 @@ import com.igr.walletservice.entity.User;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/** Репозиторий пользователей */
 public class UserRepository {
     List<User> userList = new ArrayList<>();
     public User findUserByLogin(String login) {
