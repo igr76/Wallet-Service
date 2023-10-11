@@ -4,21 +4,21 @@ import java.util.HashMap;
 
 public class AccountRepository {
     HashMap<String ,Double> balanceMap;
-    public boolean increaseBalance(double money, String user) {
+    public int increaseBalance(double money, String user) {
         if (balanceMap.containsKey(user)) {
             balanceMap.put(user,money+balanceMap.get(user));
-            return true;
-        }return false;
+            return 1;
+        }return 0;
     }
 
-    public int reduceBalance(double money, String user) {
+    public double reduceBalance(double money, String user) {
         if (balanceMap.containsKey(user)) {
             double balanceReal = balanceMap.get(user);
             if (balanceReal - money <= 0) {
                 return 0;
             }
             balanceMap.put(user,balanceReal-money);
-            return 1;
+            return getBalance(user);
         } else return -1;
     }
 

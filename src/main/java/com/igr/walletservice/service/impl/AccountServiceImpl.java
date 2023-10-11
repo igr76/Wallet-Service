@@ -4,27 +4,35 @@ import com.igr.walletservice.entity.History;
 import com.igr.walletservice.repository.AccountRepository;
 import com.igr.walletservice.repository.HistoryRepository;
 import com.igr.walletservice.service.AccountService;
+import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
-
+@RequiredArgsConstructor
 public class AccountServiceImpl implements AccountService {
     private AccountRepository accountRepository;
     private HistoryRepository historyRepository;
+
     @Override
-    public boolean increaseBalance(double money,String user) {
+    public double getBalance(String user) {
+        return accountRepository.getBalance(user);
+    }
+
+    @Override
+    public double increaseBalance(double money,String user) {
         double beforeBalance = accountRepository.getBalance(user);
-        if (accountRepository.increaseBalance(money, user)) {
+        if (accountRepository.increaseBalance(money, user)>0) {
             History history= new History();
             history.setLocalDateTime(LocalDateTime.now());
             history.setBeforeBalance(beforeBalance);
             history.setAfterBalance(accountRepository.getBalance(user));
             historyRepository.save(history);
+            return accountRepository.getBalance(user);
         }
-        return false;
+        return 0;
     }
 
     @Override
-    public int reduceBalance(double money,String user) {
+    public double reduceBalance(double money,String user) {
         double beforeBalance = accountRepository.getBalance(user);
          if (accountRepository.reduceBalance(money, user)==1) {
             History history= new History();
@@ -32,7 +40,7 @@ public class AccountServiceImpl implements AccountService {
             history.setBeforeBalance(beforeBalance);
             history.setAfterBalance(accountRepository.getBalance(user));
             historyRepository.save(history);
-             return 1;
+             return accountRepository.getBalance(user);
         }
          return accountRepository.reduceBalance(money, user);
     }

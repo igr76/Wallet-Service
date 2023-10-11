@@ -12,7 +12,7 @@ public class HistoryRepository {
         historyList.add(history);
     }
 
-    public List<History>  getHistory(String login) {
+    public List<History>  getMyHistory(String login) {
         List<History> historyListLogin = new ArrayList<>();
         for (History e :
                 historyList) {
