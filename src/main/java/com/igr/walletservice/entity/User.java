@@ -9,6 +9,8 @@ import lombok.experimental.FieldDefaults;
 @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class User {
+    /** id пользователя */
+    long id;
     /** Логин пользователя */
     String login;
     /** Пароль пользователя */

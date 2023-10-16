@@ -1,0 +1,22 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.10.xsd">
+
+    <changeSet id="004-insert-table-history" author="igor">
+        <insert tableName="history">
+            <column name="id" valueNumeric="1"/>
+            <column name="localDateTime" value="2023-10-02 02:00:00"/>
+            <column name="login" value="user1"/>
+            <column name="beforeBalance" value="120"/>
+            <column name="afterBalance" value="1200"/>
+        </insert>
+        <insert tableName="history">
+            <column name="id" valueNumeric="2"/>
+            <column name="localDateTime" value="2023-10-02 02:10:00"/>
+            <column name="login" value="user2"/>
+            <column name="beforeBalance" value="13999"/>
+            <column name="afterBalance" value="12000"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

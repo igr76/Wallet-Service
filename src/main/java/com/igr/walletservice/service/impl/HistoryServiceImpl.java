@@ -11,7 +11,7 @@ import java.util.List;
 public class HistoryServiceImpl implements HistoryService {
     private HistoryRepository historyRepository;
     @Override
-    public List<History> getMyHistory(String login) {
-        return historyRepository.getMyHistory(login);
+    public void getMyHistory(String login) {
+        historyRepository.getMyHistory(login);
     }
 }

@@ -12,6 +12,8 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class History {
+    /** id счёта */
+    double id;
     /** Время операции со счётом */
     LocalDateTime localDateTime;
     /** логин автора операции */
