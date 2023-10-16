@@ -5,5 +5,5 @@ import com.igr.walletservice.entity.History;
 import java.util.List;
 
 public interface HistoryService {
-    public List<History> getMyHistory(String login);
+    public void getMyHistory(String login);
 }

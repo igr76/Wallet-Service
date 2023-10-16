@@ -9,6 +9,8 @@ import lombok.experimental.FieldDefaults;
 @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Account {
+    /** id владельца счёта */
+    long id;
     /** Логин владельца счёта */
     String login;
     /** Состояние счёта */

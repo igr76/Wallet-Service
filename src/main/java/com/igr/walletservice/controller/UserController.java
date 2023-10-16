@@ -66,12 +66,8 @@ public class UserController {
         System.out.println("Введите пароль");
         user.setPassword(in.next());
         if (userService.checkPassword(user)) {
-            List<History> historyList = historyService.getMyHistory(user.getLogin());
-            for (History e :
-                    historyList) {
-                System.out.println(e.getLocalDateTime()+ "счет был: "+ e.getBeforeBalance()
-                +"счёт стал: "+e.getAfterBalance());
-            }
+             historyService.getMyHistory(user.getLogin());
+
         }else System.out.println("Неверный пароль");
     }
 }
