@@ -1,18 +1,14 @@
 package com.igr.walletservice.repository;
 
-import com.igr.walletservice.entity.User;
-import org.springframework.beans.factory.annotation.Value;
 
 import java.sql.*;
 import java.util.HashMap;
+
+import static com.igr.walletservice.jdbc.Liquibase.*;
+
 /** Репозиторий счетов*/
 public class AccountRepository {
-    @Value("${spring.datasource.url}")
-    private String URL;
-    @Value("${spring.datasource.username}")
-    private String USER_NAME;
-    @Value("${spring.datasource.password}")
-    private String PASSWORD;
+
     public int increaseBalance(double money, String user) {
         double balance = getBalance(user)+money;
         Connection connection = null;

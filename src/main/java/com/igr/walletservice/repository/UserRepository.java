@@ -1,19 +1,15 @@
 package com.igr.walletservice.repository;
 
 import com.igr.walletservice.entity.User;
-import org.springframework.beans.factory.annotation.Value;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.igr.walletservice.jdbc.Liquibase.*;
+
 /** Репозиторий пользователей */
 public class UserRepository {
-    @Value("${spring.datasource.url}")
-    private String URL;
-    @Value("${spring.datasource.username}")
-    private String USER_NAME;
-    @Value("${spring.datasource.password}")
-    private String PASSWORD;
     List<User> userList = new ArrayList<>();
     public User findUserByLogin(String login) {
         User user = new User();
