@@ -1,0 +1,26 @@
+version: "3.3"
+
+services:
+
+  postgres:
+    image: "postgres:14.4"
+    hostname: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=x
+      - POSTGRES_USER=igr
+      - POSTGRES_PASSWORD=11111111
+    volumes:
+      - /var/lib/postgresql/data
+
+  rest-api:
+    hostname: WalletService
+    build:
+      context: .
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/x
+    depends_on:
+      - postgres

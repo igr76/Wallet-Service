@@ -1,20 +1,16 @@
 package com.igr.walletservice.repository;
 
 import com.igr.walletservice.entity.History;
-import org.springframework.beans.factory.annotation.Value;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.igr.walletservice.jdbc.Liquibase.*;
+
 /** Репозиторий истории */
 public class HistoryRepository {
     List<History> historyList ;
-    @Value("${spring.datasource.url}")
-    private String URL;
-    @Value("${spring.datasource.username}")
-    private String USER_NAME;
-    @Value("${spring.datasource.password}")
-    private String PASSWORD;
 
     public void save(History history) {
         try (Connection connection = DriverManager.getConnection(URL,USER_NAME,PASSWORD)){

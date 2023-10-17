@@ -3,17 +3,10 @@ package com.igr.walletservice;
 import com.igr.walletservice.controller.AccountController;
 import com.igr.walletservice.controller.UserController;
 import com.igr.walletservice.jdbc.Liquibase;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import java.util.Scanner;
 
-
 public class WalletServiceApplication {
-
-
     public static void main(String[] args) {
-        SpringApplication.run(WalletServiceApplication.class, args);
         UserController userController = new UserController();
         AccountController accountController = new AccountController();
         Liquibase.LiquibaseStart();
