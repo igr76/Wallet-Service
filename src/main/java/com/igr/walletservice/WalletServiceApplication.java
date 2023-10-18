@@ -15,6 +15,7 @@ public class WalletServiceApplication {
                 " \n 2- обновить пользователя \n  3- удалить пользователя \n 4- получить" +
                 "состояние баланса \n  5- пополнение баланса \n  6- снятие средств  \n" +
                 "7- получить историю операций");
+        in.useDelimiter("\n");
         int number = in.nextInt();
         boolean b = false;
         while (b) {
