@@ -4,10 +4,9 @@ import liquibase.database.Database;
 import liquibase.database.DatabaseFactory;
 import liquibase.database.jvm.JdbcConnection;
 import liquibase.resource.ClassLoaderResourceAccessor;
-import lombok.extern.slf4j.Slf4j;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
+/** Подключение БД */
 public class Liquibase {
 
      public  static String URL="jdbc:postgresql://localhost:5432/x";

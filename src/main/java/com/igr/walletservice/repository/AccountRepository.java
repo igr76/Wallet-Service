@@ -1,13 +1,32 @@
 package com.igr.walletservice.repository;
 
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.util.HashMap;
+import java.util.Properties;
 
 import static com.igr.walletservice.jdbc.Liquibase.*;
 
 /** Репозиторий счетов*/
 public class AccountRepository {
+    String URL ;
+    String USER_NAME ;
+    String PASSWORD ;
+    public AccountRepository() throws IOException {
+        Properties props = new Properties();
+        try(
+                InputStream in = Files.newInputStream(Paths.get("database.properties"))){
+            props.load(in);
+        }
+        String URL = props.getProperty("url");
+        String USER_NAME = props.getProperty("username");
+        String PASSWORD = props.getProperty("password");
+    }
+
 
     public int increaseBalance(double money, String user) {
         double balance = getBalance(user)+money;

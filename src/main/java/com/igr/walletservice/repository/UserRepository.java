@@ -2,14 +2,32 @@ package com.igr.walletservice.repository;
 
 import com.igr.walletservice.entity.User;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import static com.igr.walletservice.jdbc.Liquibase.*;
 
 /** Репозиторий пользователей */
 public class UserRepository {
+    String URL ;
+    String USER_NAME ;
+    String PASSWORD ;
+    public UserRepository() throws IOException {
+        Properties props = new Properties();
+        try(
+                InputStream in = Files.newInputStream(Paths.get("database.properties"))){
+            props.load(in);
+        }
+        String URL = props.getProperty("url");
+        String USER_NAME = props.getProperty("username");
+        String PASSWORD = props.getProperty("password");
+    }
     List<User> userList = new ArrayList<>();
     public User findUserByLogin(String login) {
         User user = new User();
