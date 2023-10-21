@@ -14,30 +14,6 @@ public class UserController {
     private UserService userService;
     private HistoryService historyService;
     private AccountController accountController;
-
-    public void start() {
-        Scanner in = new Scanner(System.in);
-
-        System.out.println("Меню кредитного сервиса: /n  1- создать пользователя" +
-                " /n 2- обновить пользователя /n  3- удалить пользователя /n 4- получить" +
-                "состояние баланса /n  5- пополнение баланса /n  6- снятие средств  /n" +
-                "7- получить историю операций");
-        int number = in.nextInt();
-        boolean b = false;
-        while (b) {
-            switch (Integer.toString(number)) {
-                case "1" -> greateUser();
-                case "2" -> updateUser();
-                case "3" -> deleteUser();
-                case "4" -> accountController.getBalance();
-                case "5" -> accountController.increaseBalance();
-                case "6" -> accountController.reduceBalance();
-                case "7" -> getMyHistory();
-                default -> b=true;
-            }
-        }
-    }
-
     public void greateUser() {
         System.out.println("1111111");
         Scanner in = new Scanner(System.in);
@@ -90,12 +66,8 @@ public class UserController {
         System.out.println("Введите пароль");
         user.setPassword(in.next());
         if (userService.checkPassword(user)) {
-            List<History> historyList = historyService.getMyHistory(user.getLogin());
-            for (History e :
-                    historyList) {
-                System.out.println(e.getLocalDateTime()+ "счет был: "+ e.getBeforeBalance()
-                +"счёт стал: "+e.getAfterBalance());
-            }
+             historyService.getMyHistory(user.getLogin());
+
         }else System.out.println("Неверный пароль");
     }
 }

@@ -3,7 +3,8 @@ package com.igr.walletservice.service;
 import com.igr.walletservice.entity.History;
 
 import java.util.List;
-
+/**  сервис историй */
 public interface HistoryService {
-    public List<History> getMyHistory(String login);
+    /** Получить историю операций */
+    public void getMyHistory(String login);
 }

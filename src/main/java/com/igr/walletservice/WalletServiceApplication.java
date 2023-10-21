@@ -2,27 +2,20 @@ package com.igr.walletservice;
 
 import com.igr.walletservice.controller.AccountController;
 import com.igr.walletservice.controller.UserController;
-import com.igr.walletservice.entity.User;
-import com.igr.walletservice.service.HistoryService;
-import com.igr.walletservice.service.impl.HistoryServiceImpl;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
+import com.igr.walletservice.jdbc.Liquibase;
 import java.util.Scanner;
 
-@SpringBootApplication
 public class WalletServiceApplication {
-
-
     public static void main(String[] args) {
-        SpringApplication.run(WalletServiceApplication.class, args);
         UserController userController = new UserController();
         AccountController accountController = new AccountController();
+        Liquibase.LiquibaseStart();
         Scanner in = new Scanner(System.in);
         System.out.println("Меню кредитного сервиса: \n  1- создать пользователя" +
                 " \n 2- обновить пользователя \n  3- удалить пользователя \n 4- получить" +
                 "состояние баланса \n  5- пополнение баланса \n  6- снятие средств  \n" +
                 "7- получить историю операций");
+        in.useDelimiter("\n");
         int number = in.nextInt();
         boolean b = false;
         while (b) {
