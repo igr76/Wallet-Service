@@ -4,7 +4,7 @@ public interface AccountService {
     /**  Получить баланс счёта */
     public double getBalance(String user);
     /**  Пополнить счёт */
-    public double increaseBalance(double money,String user);
+    public double debit(double money,String user);
     /**  Изьять средства со счёта */
-    public double reduceBalance(double money,String user);
+    public double credit(double money,String user);
 }

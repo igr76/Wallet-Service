@@ -14,27 +14,18 @@ public class UserController {
     private UserService userService;
     private HistoryService historyService;
     private AccountController accountController;
-    public void greateUser() {
-        System.out.println("1111111");
-        Scanner in = new Scanner(System.in);
+    public void greateUser(String login,String password) {
         User user= new User();
-        System.out.println("Введите логин");
-        user.setLogin(in.next());
-        System.out.println("Введите пароль");
-        user.setPassword(in.next());
-        if (userService.checkPassword(user)) {
+        user.setLogin(login);
+        user.setPassword(password);
             if (userService.greateUser(user)) {
                 System.out.println("Пользователь успешно сохранен");
             }else System.out.println("Пользователь с таким именем уже существует, создание невозможно");
-        }else System.out.println("Неверный пароль");
     }
-    public void updateUser() {
-        Scanner in = new Scanner(System.in);
+    public void updateUser(String login,String password) {
         User user= new User();
-        System.out.println("Введите логин");
-        user.setLogin(in.next());
-        System.out.println("Введите пароль");
-        user.setPassword(in.next());
+        user.setLogin(login);
+        user.setPassword(password);
         if (userService.checkPassword(user)) {
             if (userService.updateUser(user)) {
                 System.out.println("Пользователь успешно обновлен");
@@ -43,13 +34,10 @@ public class UserController {
 
 
     }
-    public void deleteUser() {
-        Scanner in = new Scanner(System.in);
+    public void deleteUser(String login,String password) {
         User user= new User();
-        System.out.println("Введите логин");
-        user.setLogin(in.next());
-        System.out.println("Введите пароль");
-        user.setPassword(in.next());
+        user.setLogin(login);
+        user.setPassword(password);
         if (userService.checkPassword(user)) {
             if (userService.updateUser(user)) {
                 System.out.println("Пользователь успешно удален");
@@ -58,13 +46,10 @@ public class UserController {
 
     }
 
-    public void getMyHistory() {
-        Scanner in = new Scanner(System.in);
+    public void getMyHistory(String login,String password) {
         User user= new User();
-        System.out.println("Введите логин");
-        user.setLogin(in.next());
-        System.out.println("Введите пароль");
-        user.setPassword(in.next());
+        user.setLogin(login);
+        user.setPassword(password);
         if (userService.checkPassword(user)) {
              historyService.getMyHistory(user.getLogin());
 

@@ -32,18 +32,18 @@ class AccountServiceTest {
 
     @Test
     void increaseBalance() {
-        assertThat(accountService.increaseBalance(100,"user1")).isEqualTo(1400.);
+        assertThat(accountService.debit(100,"user1")).isEqualTo(1400.);
         verify(accountRepository, times(4));
     }
 
     @Test
     void reduceBalance() {
-        assertThat(accountService.reduceBalance(100,"user1")).isEqualTo(1300.);
+        assertThat(accountService.credit(100,"user1")).isEqualTo(1300.);
         verify(accountRepository, times(4));
     }
     @Test
     void reduceBalanceNegativeTest() {
-        assertThat(accountService.reduceBalance(100000,"user1")).isEqualTo(0);
+        assertThat(accountService.credit(100000,"user1")).isEqualTo(0);
         verify(accountRepository, times(3));
     }
 }
