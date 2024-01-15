@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class History {
     /** id счёта */
-    double id;
+    String id;
     /** Время операции со счётом */
     LocalDateTime localDateTime;
     /** логин автора операции */

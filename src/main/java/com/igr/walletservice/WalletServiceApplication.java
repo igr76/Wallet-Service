@@ -2,6 +2,7 @@ package com.igr.walletservice;
 
 import com.igr.walletservice.controller.AccountController;
 import com.igr.walletservice.controller.UserController;
+import com.igr.walletservice.entity.User;
 import com.igr.walletservice.jdbc.Liquibase;
 import java.util.Scanner;
 
@@ -10,27 +11,51 @@ public class WalletServiceApplication {
         UserController userController = new UserController();
         AccountController accountController = new AccountController();
         Liquibase.LiquibaseStart();
-        Scanner in = new Scanner(System.in);
-        System.out.println("Меню кредитного сервиса: \n  1- создать пользователя" +
-                " \n 2- обновить пользователя \n  3- удалить пользователя \n 4- получить" +
-                "состояние баланса \n  5- пополнение баланса \n  6- снятие средств  \n" +
-                "7- получить историю операций");
-        in.useDelimiter("\n");
-        int number = in.nextInt();
-        boolean b = false;
-        while (b) {
-            switch (Integer.toString(number)) {
-                case "1" -> userController.greateUser();
-                case "2" -> userController.updateUser();
-                case "3" -> userController.deleteUser();
-                case "4" -> accountController.getBalance();
-                case "5" -> accountController.increaseBalance();
-                case "6" -> accountController.reduceBalance();
-                case "7" -> userController.getMyHistory();
-                default -> b=true;
-            }
-            System.out.println("222222");
+        Scanner sc = new Scanner(System.in);
+        int choice;
+        while (true) {
+            System.out.println("Меню кредитного сервиса");
+            System.out.println("-------------------\n");
+            System.out.println("1. создать пользователя");
+            System.out.println("2. обновить пользователя");
+            System.out.println("3. удалить пользователя");
+            System.out.println("4. получить состояние баланса");
+            System.out.println("5. пополнение баланса");
+            System.out.println("6. снятие средств");
+            System.out.println("7. получить историю операций");
+            System.out.println("8. Завершить работу программы");
+            System.out.print("\n Введите номер операции : ");
+            choice = sc.nextInt();
+            sc.nextLine();
+            User user= new User();
+            System.out.println("Введите логин");
+            String login = sc.next();
+            sc.nextLine();
+            System.out.println("Введите пароль");
+            String password = sc.next();
+            sc.nextLine();
+                switch (choice) {
+                    case 1 -> userController.greateUser(login,password);
+                    case 2 -> userController.updateUser(login,password);
+                    case 3 -> userController.deleteUser(login,password);
+                    case 4 -> accountController.getBalance(login,password);
+                    case 5 -> {System.out.println("Введите сумму пополнения");
+                        double money = sc.nextDouble();
+                    accountController.increaseBalance(login,password,money);}
+                    case 6 -> {System.out.println("Введите сумму пополнения");
+                        double money = sc.nextDouble();
+                        accountController.reduceBalance(login,password,money);}
+                    case 7 -> userController.getMyHistory(login,password);
+                    case 8 -> {
+                        System.out.println("\nThank you for choosing Bank Of Java.");
+                        System.exit(1);
+                        break;
+                    }
+                    default -> System.out.println("Неправильный выбор !");
+                }
         }
+
+
 
 
     }

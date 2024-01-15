@@ -12,44 +12,32 @@ public class AccountController {
     private AccountService accountService;
     private UserService userService;
 
-    public void getBalance() {
-        Scanner in = new Scanner(System.in);
+    public void getBalance(String login,String password) {
         User user= new User();
-        System.out.println("Введите логин");
-        user.setLogin(in.next());
-        System.out.println("Введите пароль");
+        user.setLogin(login);
+        user.setPassword(password);
         if (userService.checkPassword(user)) {
             System.out.println("Состояние счета: "+ accountService.getBalance(user.getLogin()));
         }else System.out.println("Неверный пароль");
     }
-    public void increaseBalance() {
-        Scanner in = new Scanner(System.in);
+    public void increaseBalance(String login,String password,double money) {
         User user= new User();
-        System.out.println("Введите логин");
-        user.setLogin(in.next());
-        System.out.println("Введите пароль");
-        user.setPassword(in.next());
-        System.out.println("Введите сумму пополнения");
-        double money = in.nextDouble();
+        user.setLogin(login);
+        user.setPassword(password);
         if (userService.checkPassword(user)) {
-            double balance = accountService.increaseBalance(money,user.getLogin());
+            double balance = accountService.debit(money,user.getLogin());
             if (balance >0) {
                 System.out.println("Сумма успешно зачисленна, состояние счета: "+balance);
             }else System.out.println("Сумма не была  зачисленна");
         }else System.out.println("Неверный пароль");
     }
 
-    public void reduceBalance() {
-        Scanner in = new Scanner(System.in);
+    public void reduceBalance(String login,String password,double money) {
         User user= new User();
-        System.out.println("Введите логин");
-        user.setLogin(in.next());
-        System.out.println("Введите пароль");
-        user.setPassword(in.next());
-        System.out.println("Введите сумму отчисления");
-        double money = in.nextDouble();
+        user.setLogin(login);
+        user.setPassword(password);
         if (userService.checkPassword(user)) {
-            double balance = accountService.increaseBalance(money,user.getLogin());
+            double balance = accountService.debit(money,user.getLogin());
             if (balance >0) {
                 System.out.println("Сумма успешно снята, состояние счета: "+balance);
             } else if (balance == 0) {
